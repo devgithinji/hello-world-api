@@ -24,10 +24,10 @@ Hello World
 {"message":"Hello World"}
 ```
 
-- http://localhost:8080/hello-world/path-variable/in28minutes
+- http://localhost:8080/hello-world/path-variable/densoft
 
 ```json
-{"message":"Hello World, in28minutes"}
+{"message":"Hello World, densoft"}
 ```
 
 ## Docker File
