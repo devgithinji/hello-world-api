@@ -41,11 +41,13 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
+			<artifactId>jackson-core</artifactId>
+			<version>2.13.4</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -62,27 +64,45 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>1.6.1</version>
+				<configuration>
+					<container>
+						<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+					</container>
+				</configuration>
 				<executions>
 					<execution>
-						<id>unpack</id>
 						<phase>package</phase>
 						<goals>
-							<goal>unpack</goal>
+							<goal>dockerBuild</goal>
 						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>${project.groupId}</groupId>
-									<artifactId>${project.artifactId}</artifactId>
-									<version>${project.version}</version>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-dependency-plugin</artifactId>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>unpack</id>-->
+<!--						<phase>package</phase>-->
+<!--						<goals>-->
+<!--							<goal>unpack</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<artifactItems>-->
+<!--								<artifactItem>-->
+<!--									<groupId>${project.groupId}</groupId>-->
+<!--									<artifactId>${project.artifactId}</artifactId>-->
+<!--									<version>${project.version}</version>-->
+<!--								</artifactItem>-->
+<!--							</artifactItems>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 <!--			<plugin>-->
 <!--				<groupId>com.spotify</groupId>-->
 <!--				<artifactId>dockerfile-maven-plugin</artifactId>-->
